@@ -1,0 +1,281 @@
+:root {
+	--icon: #b0bfd8;
+}
+body {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 0;
+	background-color: #180148;
+	
+}
+.menu {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	height: 9rem;
+	padding: 0 1.8rem .6rem;
+	background: #fff0;
+	align-items: flex-end;
+	width: 37.5rem;
+}
+.menu:before {
+	content: "";
+	width: 100%;
+	height: 9.3rem;
+	background: #181818;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-radius: 1.25rem;
+	z-index: -1;
+	box-shadow: 1px 1px 2px 0px #fff;
+}
+
+input { display: none; }
+
+label {
+	text-decoration: none;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	font-size: .87rem;
+	min-width: 6.25rem;
+	height: 6.25rem;
+	margin: .62rem .62rem 1.25rem;
+	text-align: center;
+	display: inline-grid;
+	align-items: end;
+	color: #b0bfd8;
+	position: relative;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	cursor: pointer;
+}
+
+label:hover {
+	color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+}
+
+input:checked + label {
+	color: #fff;
+	height: 8.12rem;
+}
+
+.selector {
+	--hole: #2196f3;
+	background: 
+		radial-gradient(circle at 50% 50%, #fff8 30px, #fff0 45px, #fff 50px, #fff0 50px 100%), 
+		radial-gradient(circle at 50% 50%, var(--hole) 0 45px, #fff0 50px 100%),
+		radial-gradient(circle at 50% 75px, #181818 0 70px, #fff0 71px 100%);
+	width: 5.93rem;
+	height: 5.93rem;
+	position: absolute;
+	bottom: 2.93rem;
+	left: 0;
+	z-index: -1;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	border: 1.18rem solid #181818;
+	border-radius: 100%;
+}
+
+#m-home:checked ~ .selector {
+	left: 1.4rem;
+}
+
+#m-search:checked ~ .selector {
+	left: 8.93rem;
+	filter: hue-rotate(535deg);
+}
+
+#m-notification:checked ~ .selector {
+	left: 16.43rem;
+	filter: hue-rotate(950deg);
+}
+
+#m-favorites:checked ~ .selector {
+	left: 23.9rem;
+	filter: hue-rotate(1580deg);
+}
+
+#m-profile:checked ~ .selector {
+	left: 31.37rem;
+	filter: hue-rotate(1850deg);
+}
+
+.selector:after {
+	content: "";
+	position: absolute;
+	bottom: -5rem;
+	width: 5rem;
+	height: .62rem;
+	background: #181818;
+	left: calc(50% - 40px);
+	border-radius: .31rem .31rem .93rem .93rem;
+}
+
+input:checked ~ .selector:after {
+	box-shadow: 0 -17px 35px 8px var(--hole);
+}
+
+/*** ICONS ***/
+label:before,
+label:after {
+	content: "";
+	position: absolute;
+	box-sizing: border-box;
+	transition: all 0.5s ease 0s;
+}
+
+label:hover:before,
+label:hover:after {
+	filter: brightness(1.5) drop-shadow(0px 0px 4px #fff);
+	transition: all 0.5s ease 0s;
+}
+
+input:checked + label:before, 
+input:checked + label:after {
+	filter: brightness(1.5) drop-shadow(0px 0px 2px var(--sel));
+	transition: all 0.5s ease 0s;
+}
+
+
+label[for=m-home]:before {
+	width: 2.5rem;
+	height: 2.5rem;
+	left: 1.87rem;
+	top: 1.87rem;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	border-radius: .1rem;
+	background: 
+		conic-gradient(from 90deg at 65% 60%, var(--icon) 0 25%, #fff0 0 100%),
+		conic-gradient(from 180deg at 35% 60%, var(--icon) 0 25%, #fff0 0 100%),
+		conic-gradient(from 135deg at 50% 0%, var(--icon) 0 25%, #fff0 0 100%);
+	background-repeat: no-repeat;
+	background-size: 100% 100%, 100% 100%, 100% 27px;
+}
+
+label[for=m-home]:after {
+	width: 2.5rem;
+	height: 2.5rem;
+	left: 1.87rem;
+	top: 1.5rem;
+	border: .3rem solid var(--icon);
+	border-right-width: 0;
+	border-bottom-width: 0;
+	transform: rotate(45deg);
+	border-radius: 5px;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+}
+
+
+label[for=m-search]:before {
+	width: 2.5rem;
+	height: 2.5rem;
+	left: 1.25rem;
+	top: 1rem;
+	border: .38rem solid var(--icon);
+	border-radius: 100%;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+}
+
+label[for=m-search]:after {
+	width: 1.37rem;
+	height: .56rem;
+	left: 3.75rem;
+	top: 3.12rem;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	background: var(--icon);
+	transform-origin: left top;
+	transform: rotate(45deg);
+	border-radius: 0 10px 10px 0;
+}
+
+
+label[for=m-notification]:before {
+	width: 3.12rem;
+	height: 2.6rem;
+	left: 1.5rem;
+	top: 1.25rem;
+	z-index: 1;
+	border-radius: 30px 30px 0 0;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	background: 
+		linear-gradient(90deg, #fff0 0 6px, var(--icon) 0 calc(100% - 6px), #fff0 calc(100% - 6px) 100%), 
+		conic-gradient(from 135deg at 50% 33%, var(--icon) 0 25%, #fff0 0 100%);
+}
+
+label[for=m-notification]:after {
+	width: .62rem;
+	height: 3.56rem;
+	left: 2.81rem;
+	top: .87rem;
+	z-index: 0;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	background: radial-gradient(circle at 50% 6px, var(--icon) 3px, #fff0 4px 100%), #fff0;
+	transform-origin: left top;
+	border-bottom: 6px solid var(--icon);
+	border-radius: 5px;
+}
+
+
+label[for=m-favorites]:before {
+	width: 3.12rem;
+	height: 3.12rem;
+	left: 1.12rem;
+	top: -.56rem;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+	background: 
+		radial-gradient(circle at 16px 16px, var(--icon) 0 16px, #fff0 calc(16px + 1px) 100%), 
+		radial-gradient(circle at 34px 34px, var(--icon) 0 16px, #fff0 calc(16px + 1px) 100%), 
+		linear-gradient(45deg, var(--icon) 0 37px, #fff0 38px 100%);
+	border-radius: 17px 22px 17px 4px;
+	transform: rotate(-45deg);
+	transform-origin: center right;
+}
+
+
+label[for=m-profile]:before {
+	width: 3.12rem;
+	height: 3.37rem;
+	top: 1.56rem;
+	background: 
+		radial-gradient(circle at 50% 15px, var(--icon) 0 12px, #fff0 13px 100%),
+		radial-gradient(circle at 50% 100%, var(--icon) 0 22px, #fff0 23px 100%);
+	left: 1.56rem;
+	border-radius: 8px;
+}
+
+
+input:checked + label {
+	color: var(--sel);
+	text-shadow: 0 0 5px var(--sel), 0 0 10px var(--sel);
+}	
+
+input:checked + label[for=m-home] {
+	--sel: #39a1f4;
+}
+
+input:checked + label[for=m-search] {
+	--sel:  #f48d4e;
+}
+
+input:checked + label[for=m-notification] {
+	--sel:  #84a91c;
+}
+
+input:checked + label[for=m-favorites] {
+	--sel:  #ff6275;
+	height: 125px;
+}
+
+input:checked + label[for=m-profile] {
+	--sel:  #9d74ff;
+}
+
+
+@media only screen and (orientation: portrait) {
+	label { color: transparent !important; text-shadow: none !important;}
+}
